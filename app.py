@@ -11,6 +11,16 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = database_file
 db = SQLAlchemy(app)
 
+
+class Expense(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.String(50), nullable=False)
+    expensename = db.Column(db.String(50), nullable=False)
+    amount = db.Column(db.Integer(50), nullable=False)
+    category = db.Column(db.String(50), nullable=False)
+
+    
+
 @app.route('/')
 def add():
     return render_template('add.html')
