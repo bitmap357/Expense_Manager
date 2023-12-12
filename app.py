@@ -7,6 +7,8 @@ def add():
     return render_template('add.html')
 
 @app.route('/addexpense', methods=['POST'])
+def addexpense():
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
