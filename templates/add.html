@@ -9,29 +9,26 @@
             <h3>Add expense</h3>
             <form action="/addexpense" method="POST">
                 <div class="form-group">
-                    <label for=""></label>
+                    <label for="">Date</label>
+                    <input type="date" name="date" id="date">
                 </div>
                 <div class="form-group">
-                    <label for=""></label>
+                    <label for="">Expense Name</label>
+                    <input type="text" name="expensename" id="expensename">
                 </div>
                 <div class="form-group">
-                    <label for=""></label>
+                    <label for="">Expense Amount</label>
+                    <input type="text" name="amount" id="amount">
                 </div>
                 <div class="form-group">
-                    <label for=""></label>
-                </div>
-                <div class="form-group">
-                    <label for=""></label>
-                </div>
-                <input type="date" name="date" id="date">
-                <input type="text" name="expensename" id="expensename">
-                <input type="text" name="amount" id="amount">
-                <select name="category" id="category">
-                    <option value="food">Food</option>
-                    <option value="entertainment">Entertainment</option>
-                    <option value="business">Business</option>
-                    <option value="other">Other</option>
-                </select>
+                    <label for="">Expense Category</label>
+                    <select name="category" id="category">
+                        <option value="food">Food</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="business">Business</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>                               
                 <input type="submit" value="Add" id="">
             </form>
         </div>
