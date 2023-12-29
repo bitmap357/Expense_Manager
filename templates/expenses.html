@@ -1,12 +1,27 @@
 {% extends 'base.html' %}
-
-
 {% block body %}
 
-{% for expense in expenses %}
-    {{expense.date}} ->{{expense.expensename}} ->{{expense.amount}} ->{{expense.category}}</br>
+<div class="container">
+    {% for expense in expenses %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow bg-white rounded">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-2">{{expense.expensename}}</div>
+                        <div class="col-md-2">{{expense.amount}}</div>
+                        <div class="col-md-2">{{expense.date}}</div>
+                        <div class="col-md-2">{{expense.category}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 
-{% endfor %}
+     
+
 
 
 {% endblock %}
