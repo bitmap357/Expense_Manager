@@ -25,6 +25,11 @@ class Expense(db.Model):
 def add():
     return render_template('add.html')
 
+@app.route('/expenses')
+def expenses():
+    expenses = Expense.query.all()
+    return render_template('expenses.html', expenses=expenses)
+
 @app.route('/addexpense', methods=['POST'])
 def addexpense():
     date = request.form['date']
