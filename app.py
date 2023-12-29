@@ -25,6 +25,12 @@ class Expense(db.Model):
 def add():
     return render_template('add.html')
 
+@app.route('/delete')
+def delete():
+    pass
+    
+    
+    
 @app.route('/expenses')
 def expenses():
     expenses = Expense.query.all()
