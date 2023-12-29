@@ -3,5 +3,10 @@
 
 {% block body %}
 
+{% for expense in expenses %}
+    {{expense.date}} ->{{expense.name}} ->{{expense.amount}} ->{{expense.category}}
+
+{% endfor %}
+
 
 {% endblock %}
