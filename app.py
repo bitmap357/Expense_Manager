@@ -32,7 +32,11 @@ def delete(id):
     db.session.commit()
     return redirect('/expenses')
     
+@app.route('/updateexpense/<int:id>')
+def updateexpense(id):
+    expense = Expense.query.filter_by(id=id).first()
     
+
     
 @app.route('/expenses')
 def expenses():
