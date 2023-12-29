@@ -5,13 +5,15 @@
     {% for expense in expenses %}
     <div class="row">
         <div class="col-md-12">
-            <div class="card shadow bg-white rounded">
+            <div class="card shadow mb-2 bg-white rounded">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-2">{{expense.expensename}}</div>
                         <div class="col-md-2">{{expense.amount}}</div>
                         <div class="col-md-2">{{expense.date}}</div>
-                        <div class="col-md-2">{{expense.category}}</div>
+                        <div class="col-md-2">
+                            <span class="badge badge-primary">{{expense.category}}</span>
+                            </div>
                     </div>
                 </div>
             </div>
