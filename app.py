@@ -40,7 +40,7 @@ def addexpense():
     expense = Expense(date=date, expensename=expensename, amount=amount, category=category)
     db.session.add(expense)
     db.session.commit()
-    return redirect("/")
+    return redirect("/expenses")
 
 
 if __name__ == '__main__':
