@@ -25,9 +25,12 @@ class Expense(db.Model):
 def add():
     return render_template('add.html')
 
-@app.route('/delete')
-def delete():
-    pass
+@app.route('/delete/<int:id>')
+def delete(id):
+    expense = Expense.query.filter_by(id=id).first()
+    db.session.delete(expense)
+    db.session.commit()
+    return redirect('/expenses')
     
     
     
