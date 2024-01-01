@@ -37,6 +37,9 @@ def updateexpense(id):
     expense = Expense.query.filter_by(id=id).first()
     return render_template('updateexpense.html', expense=expense)
 
+@app.route('/edit')
+def edit():
+    
     
 @app.route('/expenses')
 def expenses():
