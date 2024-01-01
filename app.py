@@ -39,7 +39,12 @@ def updateexpense(id):
 
 @app.route('/edit', methods=['POST'])
 def edit():
-    id = request.form['']
+    id = request.form['id']
+    date = request.form['date']
+    expensename = request.form['expensename']
+    amount = request.form['amount']
+    category = request.form['category']
+    
     
 @app.route('/expenses')
 def expenses():
