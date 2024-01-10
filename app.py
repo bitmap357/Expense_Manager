@@ -44,7 +44,16 @@ def edit():
     expensename = request.form['expensename']
     amount = request.form['amount']
     category = request.form['category']
+    expense = request.form['expense']
     
+    expense = Expense.query.filter_by(id=id).first()
+    expense.date = date
+    expense.expensename = expensename
+    expense.date = date
+    expense.date = date
+    expense.date = date
+    
+
     
 @app.route('/expenses')
 def expenses():
