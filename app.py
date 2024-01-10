@@ -58,6 +58,8 @@ def edit():
 @app.route('/expenses')
 def expenses():
     expenses = Expense.query.all()
+    for x in expenses:
+        print(x.amount)
     return render_template('expenses.html', expenses=expenses)
 
 @app.route('/addexpense', methods=['POST'])
