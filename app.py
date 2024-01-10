@@ -50,7 +50,7 @@ def edit():
     expense.date = date
     expense.expensename = expensename
     expense.amount = amount
-    expense.date = date
+    expense.category = category
     expense.date = date
     
 
