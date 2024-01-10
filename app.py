@@ -49,7 +49,7 @@ def edit():
     expense = Expense.query.filter_by(id=id).first()
     expense.date = date
     expense.expensename = expensename
-    expense.date = date
+    expense.amount = amount
     expense.date = date
     expense.date = date
     
