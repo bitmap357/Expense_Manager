@@ -71,7 +71,8 @@ def expenses():
             t_other +=expense.amount
         elif expense.category == 'food':
             t_food +=expense.amount
-        
+        elif expense.category == 'entertainment':
+            t_entertainment +=expense.amount
     return render_template('expenses.html', expenses=expenses)
 
 @app.route('/addexpense', methods=['POST'])
