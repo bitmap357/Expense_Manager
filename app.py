@@ -66,7 +66,12 @@ def expenses():
     for expense in expenses:
         total += expense.amount
         if expense.category == 'business':
-            
+            t_business +=expense.amount
+        elif expense.category == 'other':
+            t_other +=expense.amount
+        elif expense.category == 'food':
+            t_food +=expense.amount
+        
     return render_template('expenses.html', expenses=expenses)
 
 @app.route('/addexpense', methods=['POST'])
