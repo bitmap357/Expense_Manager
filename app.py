@@ -59,9 +59,14 @@ def edit():
 def expenses():
     expenses = Expense.query.all()
     total = 0
+    t_business = 0
+    t_other = 0
+    t_food = 0
+    t_entertainment = 0
     for expense in expenses:
         total += expense.amount
-        
+        if expense.category == 'business':
+            
     return render_template('expenses.html', expenses=expenses)
 
 @app.route('/addexpense', methods=['POST'])
