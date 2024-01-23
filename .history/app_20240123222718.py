@@ -94,32 +94,7 @@ def addexpense():
     db.session.commit()
     return redirect("/expenses")
 
-@app.route('/addview', methods=['GET', 'POST'])
-def addview():
-    expenses = Expense.query.all()
-    total = 0
-    t_business = 0
-    t_other = 0
-    t_food = 0
-    t_entertainment = 0
-    for expense in expenses:
-        total += expense.amount
-        if expense.category == 'business':
-            t_business +=expense.amount
-        elif expense.category == 'other':
-            t_other +=expense.amount
-        elif expense.category == 'food':
-            t_food +=expense.amount
-        elif expense.category == 'entertainment':
-            t_entertainment +=expense.amount
-    return render_template(
-        'expenses.html', 
-        expenses=expenses, 
-        total=total, 
-        t_entertainment=t_entertainment, 
-        t_food=t_food, 
-        t_business=t_business, 
-        t_other=t_other)
+@
 
 
 if __name__ == '__main__':
