@@ -123,15 +123,8 @@ def addview():
         db.session.add(expense)
         db.session.commit()
         return redirect("/addview")
-
-    return render_template(
-    'addview.html', 
-    expenses=expenses, 
-    total=total, 
-    t_entertainment=t_entertainment, 
-    t_food=t_food, 
-    t_business=t_business, 
-    t_other=t_other)
+    else:
+        return render_template('addview.html')
 
 
 if __name__ == '__main__':

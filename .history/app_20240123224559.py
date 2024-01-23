@@ -113,7 +113,7 @@ def addview():
                 t_food +=expense.amount
             elif expense.category == 'entertainment':
                 t_entertainment +=expense.amount
-    elif request.method == 'POST':
+            elif request.method == 'POST':
         date = request.form['date']
         expensename = request.form['expensename']
         amount = request.form['amount']
@@ -123,15 +123,8 @@ def addview():
         db.session.add(expense)
         db.session.commit()
         return redirect("/addview")
-
-    return render_template(
-    'addview.html', 
-    expenses=expenses, 
-    total=total, 
-    t_entertainment=t_entertainment, 
-    t_food=t_food, 
-    t_business=t_business, 
-    t_other=t_other)
+    else:
+        return render_template('addview.html')
 
 
 if __name__ == '__main__':
