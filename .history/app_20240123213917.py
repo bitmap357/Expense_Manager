@@ -76,11 +76,7 @@ def expenses():
     return render_template(
         'expenses.html', 
         expenses=expenses, 
-        total=total, 
-        t_entertainment=t_entertainment, 
-        t_food=t_food, 
-        t_business=t_business, 
-        t_other=t_other)
+        total=total, t_entertainment=t_entertainment, t_food=t_food, t_business=t_business, t_other=t_other)
 
 @app.route('/addexpense', methods=['POST'])
 def addexpense():

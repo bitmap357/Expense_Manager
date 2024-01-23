@@ -79,8 +79,7 @@ def expenses():
         total=total, 
         t_entertainment=t_entertainment, 
         t_food=t_food, 
-        t_business=t_business, 
-        t_other=t_other)
+        t_business=t_business, t_other=t_other)
 
 @app.route('/addexpense', methods=['POST'])
 def addexpense():

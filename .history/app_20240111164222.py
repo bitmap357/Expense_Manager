@@ -73,14 +73,7 @@ def expenses():
             t_food +=expense.amount
         elif expense.category == 'entertainment':
             t_entertainment +=expense.amount
-    return render_template(
-        'expenses.html', 
-        expenses=expenses, 
-        total=total, 
-        t_entertainment=t_entertainment, 
-        t_food=t_food, 
-        t_business=t_business, 
-        t_other=t_other)
+    return render_template('expenses.html', expenses=expenses, total=total, t_entertainment=t_entertainment, t_food=t_food, t_business=t_business, t_other=t_other)
 
 @app.route('/addexpense', methods=['POST'])
 def addexpense():
