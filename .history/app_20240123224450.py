@@ -123,14 +123,14 @@ def addview():
             t_other=t_other)
     elif request.method == 'POST':
         date = request.form['date']
-        expensename = request.form['expensename']
-        amount = request.form['amount']
-        category = request.form['category']
-        print(date + expensename + amount + category)
-        expense = Expense(date=date, expensename=expensename, amount=amount, category=category)
-        db.session.add(expense)
-        db.session.commit()
-        return redirect("/expenses")
+    expensename = request.form['expensename']
+    amount = request.form['amount']
+    category = request.form['category']
+    print(date + expensename + amount + category)
+    expense = Expense(date=date, expensename=expensename, amount=amount, category=category)
+    db.session.add(expense)
+    db.session.commit()
+    return redirect("/expenses")
     else:
         return render_template('addview.html')
 
