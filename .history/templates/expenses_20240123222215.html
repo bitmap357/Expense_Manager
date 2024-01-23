@@ -82,8 +82,8 @@
               <script>
                 let food = document.getElementById('tfood').innerHTML
                 let entertainment = document.getElementById('tentertainment').innerHTML
-                let business = document.getElementById('tbusiness').innerHTML
-                let other = document.getElementById('tother').innerHTML
+                let food = document.getElementById('tbusiness').innerHTML
+                let food = document.getElementById('tother').innerHTML
                 const ctx = document.getElementById('myChart');
               
                 new Chart(ctx, {
@@ -92,7 +92,7 @@
                     labels: ['Food', 'Entertainment', 'Business', 'Other'],
                     datasets: [{
                       label: '# of Votes',
-                      data: [food, entertainment, business, other],
+                      data: [12, 19, 3, 5, 2, 3],
                       borderWidth: 1
                     }]
                   },
