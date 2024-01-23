@@ -122,7 +122,6 @@ def addview():
             t_business=t_business, 
             t_other=t_other)
     else:
-        return render_template('addview.html')
 
 
 if __name__ == '__main__':
