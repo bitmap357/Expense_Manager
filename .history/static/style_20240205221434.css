@@ -10,22 +10,14 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-.nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
-    position: relative;
-}
-
 .navbar{
     position: fixed;
     top: 0;
     left: 0;
     background: rgb(60, 228, 9);
-    height: 10vh;
+    height: 100vh;
     width: 100%;
-    text-transform: uppercase;  
+    text-transform: uppercase;
 }
 
 .logo{
