@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    margin: 1.5em;
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    position: relative;
+}
+
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgb(60, 228, 9);
+    height: 10vh;
+    width: 100%;
+    text-transform: uppercase;  
+}
+
+.logo{
+    color: white;
+    font-weight: bold;
+}
+
+.container {
+    margin-top: 4em;
+    border: 1px;
+}

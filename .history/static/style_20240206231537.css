@@ -8,9 +8,7 @@
 body {
     margin: 1.5em;
     font-family: 'Poppins', sans-serif;
-    background: url('./background2.jpg');
-    background-size: cover;
-    background-position: center;
+    background: ;
 }
 
 .nav{
@@ -25,11 +23,10 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    background: rgb(212, 188, 198);
+    background: transparent;
     height: 10vh;
     width: 100%;
     text-transform: uppercase;  
-    backdrop-filter: blur();
 }
 
 .logo{
@@ -55,7 +52,6 @@ body {
     width: 0;
     height: 2px;
     background: #fff;
-    transition: .3s;
 }
 
 .navbar a:hover::before{
