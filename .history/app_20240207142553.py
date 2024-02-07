@@ -10,7 +10,7 @@ database_file = "sqlite:///{}".format(
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = database_file
-db = SQLAlchemy(app)
+# db = SQLAlchemy(app)
 app.config['SECRET_KEY'] = 'thisismysecretkey'
 
 
