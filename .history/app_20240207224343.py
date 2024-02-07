@@ -191,7 +191,7 @@ def login():
 
 @app.route('/register')
 def register():
-    form = RegisterForm()
+     form = RegisterForm()
 
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data)
