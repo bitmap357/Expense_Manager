@@ -14,10 +14,8 @@ db = SQLAlchemy(app)
 app.config['SECRET_KEY'] = 'thisismysecretkey'
 
 
-class User(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String, nullable=False, unique=True)
-    password = db.Column(db.String(80), nullable=False)
+class User(db.Model):
+    
 
 
 class Expense(db.Model):
