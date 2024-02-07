@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import UserMixin
 import os
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
@@ -11,8 +10,7 @@ database_file = "sqlite:///{}".format(
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = database_file
 db = SQLAlchemy(app)
-app.config['SECRET_KEY'] = 'thisismysecretkey'
-
+app.config['SECRET_KEY'] = 'thisismysecret'
 
 
 class Expense(db.Model):

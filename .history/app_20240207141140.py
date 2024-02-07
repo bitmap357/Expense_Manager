@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import UserMixin
+from flask_login import UserMixim
 import os
 
 project_dir = os.path.dirname(os.path.abspath(__file__))

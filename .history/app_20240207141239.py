@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import UserMixin
+from flask_login import UserMixim
 import os
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
-database_file = "sqlite:///{}".format(
+database_file = "sqpip install flask flask_sqlalchemy flask_login flask_bcrypt flask_wtf wtforms email_validatorlite:///{}".format(
     os.path.join(project_dir, "mydatabase.db")
 )
 
