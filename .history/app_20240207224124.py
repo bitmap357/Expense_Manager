@@ -54,7 +54,7 @@ class LoginForm(FlaskForm):
                              InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
 
     submit = SubmitField('Login')
-
+        
 
 class Expense(db.Model):
     id = db.Column(db.Integer, primary_key=True)
