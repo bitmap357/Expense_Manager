@@ -111,7 +111,7 @@ def addview():
                 t_other +=expense.amount
             elif expense.category == 'Food':
                 t_food +=expense.amount
-            elif expense.category == 'Entertainment':
+            elif expense.category == 'entertainment':
                 t_entertainment +=expense.amount
     elif request.method == 'POST':
         date = request.form['date']
