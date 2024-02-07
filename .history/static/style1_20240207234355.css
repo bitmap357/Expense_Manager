@@ -7,9 +7,4 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
-    display: flex;
-    justify-content: center;
-    min-height: 100vh;
-    background: seagreen;
-}
+body
