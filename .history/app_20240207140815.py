@@ -140,7 +140,7 @@ def login():
 
 @app.route('/register')
 def login():
-    return render_template('register.html')
+    return render_template('login.html')
 
 
 

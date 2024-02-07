@@ -135,14 +135,7 @@ def addview():
 
 @app.route('/login')
 def login():
-    return render_template('login.html')
-
-
-@app.route('/register')
-def login():
-    return render_template('register.html')
-
-
+    return render_template
 
 if __name__ == '__main__':
     app.run(debug=True)
