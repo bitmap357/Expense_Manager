@@ -44,6 +44,5 @@ body {
 }
 
 .input-box input::placeholder {
-    color: #fff;
+    color: ;
 }
-
