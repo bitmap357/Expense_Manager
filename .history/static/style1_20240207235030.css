@@ -10,21 +10,7 @@
 body {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: ;
     min-height: 100vh;
     background: seagreen;
 }
-
-
-.wrapper {
-    width: 420px;
-    background: purple;
-    color: #fff;
-}
-
-.wrapper h1 {
-    font-size: 36px;
-    text-align: center;
-}
-
-.wrapper .

@@ -10,21 +10,6 @@
 body {
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    min-height: 1000vh;
     background: seagreen;
 }
-
-
-.wrapper {
-    width: 420px;
-    background: purple;
-    color: #fff;
-}
-
-.wrapper h1 {
-    font-size: 36px;
-    text-align: center;
-}
-
-.wrapper .
