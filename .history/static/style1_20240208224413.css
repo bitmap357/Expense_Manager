@@ -20,10 +20,8 @@ body {
 .logo{
     color: white;
     font-weight: 700;
-    font-size: 36px;
-    text-align: center;
     text-decoration: none;
-    display: flex;
+    display: f;
     justify-content: center;
     align-items: center;
 }
