@@ -97,7 +97,8 @@ body {
     text-decoration: underline;
 }
 
-.wrapper .btn-primary {
+/* .wrapper  */
+.btn-pri {
     width: 100%;
     height: 45px;
     background: #fff;

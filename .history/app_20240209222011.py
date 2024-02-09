@@ -29,14 +29,6 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
-class Config(Config):
-    # Other configurations...
-    MAIL_SERVER = 'your_smtp_server'
-    MAIL_PORT = 587
-    MAIL_USE_TLS = True
-    MAIL_USERNAME = 'your_email_username'
-    MAIL_PASSWORD = 'your_email_password'
-
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
