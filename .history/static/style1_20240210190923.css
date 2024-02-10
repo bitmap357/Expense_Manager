@@ -97,7 +97,7 @@ body {
     text-decoration: underline;
 }
 
-.wrapper #submit {
+.wrapper # {
     width: 100%;
     height: 45px;
     background: #fff;

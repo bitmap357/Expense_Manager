@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_wtf import FlaskForm
@@ -81,7 +81,7 @@ class Expense(db.Model):
     
 
 @app.route('/')
-@login_required
+@app.login.required
 def add():
     return render_template('add.html')
 
@@ -116,7 +116,6 @@ def edit():
 
     
 @app.route('/expenses')
-@login_required
 def expenses():
     expenses = Expense.query.all()
     total = 0
@@ -144,7 +143,6 @@ def expenses():
         t_other=t_other)
 
 @app.route('/addexpense', methods=['POST'])
-@login_required
 def addexpense():
     date = request.form['date']
     expensename = request.form['expensename']
@@ -157,7 +155,6 @@ def addexpense():
     return redirect("/expenses")
 
 @app.route('/addview', methods=['GET', 'POST'])
-@login_required
 def addview():
     if request.method == 'GET':
         expenses = Expense.query.all()

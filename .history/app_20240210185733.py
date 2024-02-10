@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_wtf import FlaskForm
@@ -157,7 +157,6 @@ def addexpense():
     return redirect("/expenses")
 
 @app.route('/addview', methods=['GET', 'POST'])
-@login_required
 def addview():
     if request.method == 'GET':
         expenses = Expense.query.all()
