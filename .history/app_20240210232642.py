@@ -28,13 +28,6 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 GOOGLE_CLIENT_ID = "828960771939-bu24ngd36lpkt5hb5dpf7i3h46cu0aad.apps.googleusercontent.com"
-client_secrets_file = os.path.join(pathlib.Path(__file__).parent, "client_secret.json")
-
-flow = Flow.from_client_secrets_file(
-    client_secrets_file=client_secrets_file,
-    scopes=["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email", "openid"],
-    redirect_uri="http://127.0.0.1:5000/callback"
-)
 
 
 @login_manager.user_loader
