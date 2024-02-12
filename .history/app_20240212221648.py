@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, Blueprint, session, abort
+from flask import Flask, render_template, request, redirect, url_for, Blueprint
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_wtf import FlaskForm
@@ -46,15 +46,6 @@ flow = Flow.from_client_secrets_file(
 )
 
 # migrate = Migrate(app, db)
-
-def login_is_required(function):
-    def wrapper(*args, **kwargs):
-        if "google_id" not in session:
-            return abort(401)  # Authorization required
-        else:
-            return function()
-
-    return wrapper
 
 
 @login_manager.user_loader
@@ -111,9 +102,9 @@ class Expense(db.Model):
     amount = db.Column(db.Integer, nullable=False)
     category = db.Column(db.String(50), nullable=False)
 
-# @app.route('/#')
-# def index():
-#     return 'App Blueprint'
+@app.route('/#')
+def index():
+    return 'App Blueprint'
 
 @app.route('/')
 @login_required
@@ -232,63 +223,63 @@ def addview():
     t_other=t_other)
 
 
-@app.route('/logout', methods=['GET', 'POST'])
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for('login'))
+# @app.route('/logout', methods=['GET', 'POST'])
+# @login_required
+# def logout():
+#     logout_user()
+#     return redirect(url_for('login'))
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
-        if user:
-            if bcrypt.check_password_hash(user.password, form.password.data):
-                login_user(user)
-                return redirect(url_for('addview'))
-    return render_template('login.html', form=form)
+# @app.route('/login', methods=['GET', 'POST'])
+# def login():
+#     form = LoginForm()
+#     if form.validate_on_submit():
+#         user = User.query.filter_by(username=form.username.data).first()
+#         if user:
+#             if bcrypt.check_password_hash(user.password, form.password.data):
+#                 login_user(user)
+#                 return redirect(url_for('addview'))
+#     return render_template('login.html', form=form)
 
 
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    form = RegisterForm()
+# @app.route('/register', methods=['GET', 'POST'])
+# def register():
+#     form = RegisterForm()
 
-    if form.validate_on_submit():
-        hashed_password = bcrypt.generate_password_hash(form.password.data)
-        new_user = User(username=form.username.data, password=hashed_password)
-        db.session.add(new_user)
-        db.session.commit()
-        return redirect(url_for('login'))
-    return render_template('register.html', form=form)
+#     if form.validate_on_submit():
+#         hashed_password = bcrypt.generate_password_hash(form.password.data)
+#         new_user = User(username=form.username.data, password=hashed_password)
+#         db.session.add(new_user)
+#         db.session.commit()
+#         return redirect(url_for('login'))
+#     return render_template('register.html', form=form)
 
-@app.route('/login/google')
-def login_with_google():
-    authorization_url, state = flow.authorization_url()
-    session["state"] = state
-    return redirect(authorization_url)
-
-
-@app.route('/login/google/callback')
-def google_callback():
-    code = request.args.get('code')
-    flow.fetch_token(code=code)
-    id_info = verify_google_token(flow.credentials.id_token)
-    if id_info:
-        user = User.query.filter_by(google_id=id_info['sub']).first()
-        if not user:
-            # Create new user
-            user = User(google_id=id_info['sub'])
-            db.session.add(user)
-            db.session.commit()
-        login_user(user)
-        return redirect(url_for('addview'))
-    else:
-        return 'Failed to authenticate with Google.', 401
+# @app.route('/login/google')
+# def login_with_google():
+#     authorization_url, state = flow.authorization_url()
+#     session["state"] = state
+#     return redirect(authorization_url)
 
 
+# @app.route('/login/google/callback')
+# def google_callback():
+#     code = request.args.get('code')
+#     flow.fetch_token(code=code)
+#     id_info = verify_google_token(flow.credentials.id_token)
+#     if id_info:
+#         user = User.query.filter_by(google_id=id_info['sub']).first()
+#         if not user:
+#             # Create new user
+#             user = User(google_id=id_info['sub'])
+#             db.session.add(user)
+#             db.session.commit()
+#         login_user(user)
+#         return redirect(url_for('addview'))
+#     else:
+#         return 'Failed to authenticate with Google.', 401
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
+
+# if __name__ == '__main__':
+#     app.run(debug=True)

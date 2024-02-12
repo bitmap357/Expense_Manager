@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, Blueprint, session, abort
+from flask import Flask, render_template, request, redirect, url_for, Blueprint
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_wtf import FlaskForm
@@ -55,8 +55,6 @@ def login_is_required(function):
             return function()
 
     return wrapper
-
-
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, Blueprint, session, abort
+from flask import Flask, render_template, request, redirect, url_for, Blueprint
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_wtf import FlaskForm
@@ -46,15 +46,6 @@ flow = Flow.from_client_secrets_file(
 )
 
 # migrate = Migrate(app, db)
-
-def login_is_required(function):
-    def wrapper(*args, **kwargs):
-        if "google_id" not in session:
-            return abort(401)  # Authorization required
-        else:
-            return function()
-
-    return wrapper
 
 
 @login_manager.user_loader
