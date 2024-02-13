@@ -308,8 +308,8 @@ def login_with_google():
 #     else:
 #         return 'Failed to authenticate with Google.', 401
 
-# @app.route("/callback")
-# def callback():
+@app.route("/callback")
+def callback():
     # flow.fetch_token(authorization_response=request.url)
     # print(request.args)
     # code = request.args.get('code')
