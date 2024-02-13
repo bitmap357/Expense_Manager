@@ -275,7 +275,6 @@ def login_with_google():
     prompt='consent'
     )
     print("Authorization URL:", authorization_url)
-    app.logger.info("Authorization URL: %s", authorization_url)
     session["state"] = state
     return redirect(authorization_url)
 

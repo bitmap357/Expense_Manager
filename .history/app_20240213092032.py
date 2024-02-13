@@ -1,5 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, Blueprint, session, abort
-from flask_session import Session
+from flask import Flask, render_template, request, redirect, url_for, Blueprint, session, abort, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_wtf import FlaskForm
@@ -26,7 +25,7 @@ database_file = "sqlite:///{}".format(
 )
 
 app = Flask(__name__)
-Session(app)
+session(app)
 app.config["SQLALCHEMY_DATABASE_URI"] = database_file
 db = SQLAlchemy(app)
 # db.init_app(app)
@@ -275,7 +274,6 @@ def login_with_google():
     prompt='consent'
     )
     print("Authorization URL:", authorization_url)
-    app.logger.info("Authorization URL: %s", authorization_url)
     session["state"] = state
     return redirect(authorization_url)
 
@@ -300,23 +298,14 @@ def login_with_google():
 @app.route("/callback")
 def callback():
     # flow.fetch_token(authorization_response=request.url)
-    # print(request.args)
-    # code = request.args.get('code')
-    # app.logger.info('Authorization code: %s', code)
-    # flow.fetch_token(authorization_response=request.url)
-    
+    print(request.args)
     code = request.args.get('code')
     app.logger.info('Authorization code: %s', code)
-    
-    session_state = session.get("state")
-    if session_state is None or session_state != request.args.get("state"):
-        abort(500)
-    # if not session["state"] == request.args["state"]:
-    #     app.logger.error('State mismatch or missing')
-    #     abort(500)  # State does not match!
-    
-    flow.fetch_token(code=code)
-    
+    flow.fetch_token(authorization_response=request.url)
+
+    if not session["state"] == request.args["state"]:
+        abort(500)  # State does not match!
+
     credentials = flow.credentials
     request_session = request.session()
     cached_session = cachecontrol.CacheControl(request_session)
@@ -330,7 +319,7 @@ def callback():
 
     session["google_id"] = id_info.get("sub")
     session["name"] = id_info.get("name")
-    return redirect("/addview")
+    return redirect("/protected_area")
 
 
 

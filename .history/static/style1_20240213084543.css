@@ -144,6 +144,9 @@ body {
 
 .google {
     margin-top: 10px;
-    display: flex;
-    justify-content: center;
+    position: relative;
+}
+
+.google {
+    pointer-events: all;
 }

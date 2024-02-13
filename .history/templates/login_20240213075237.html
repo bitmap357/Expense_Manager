@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style1.css')}}"/>
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div class="container">
+        <div class="logo">
+            <a class="navbar-brand logo" href="#">
+            <svg
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+            <path
+              d="M26.058 9.258L31.9 5.646L42.36 12.939L35.927 17.865M36.204 28.613L42.5 23.473M36.204 25.952L42.5 20.812M36.204 23.292L42.5 18.152M36.204 20.632L42.5 15.492M16.517 14.344L24.222 9.544L34.496 18.232V30.798L28.529 35.634V23.817L16.517 14.344Z"
+              stroke="black"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M35.314 14.172L38.037 12.095L36.172 10.848L34.674 11.979M5.5 31.954L19.043 42.354L26.466 36.444"
+              stroke="black"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M5.5 29.285L19.043 39.685L26.466 33.775"
+              stroke="black"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M5.604 26.616L19.147 37.017L26.57 31.107"
+              stroke="black"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M5.58997 23.948L19.132 34.348L26.555 28.438M20.235 23.75C20.009 24.777 18.541 25.304 16.957 24.925C15.373 24.547 14.272 23.408 14.498 22.38C14.724 21.353 16.192 20.827 17.776 21.205C19.36 21.583 20.461 22.723 20.235 23.75Z"
+              stroke="black"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M15.051 15.826L5.75598 21.421L19.087 31.538L26.727 25.523"
+              stroke="black"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          Expense Manager
+        </a>
+      </div>
+
+      <div class="wrapper">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <h1>Login</h1>
+            <div class="input-box">
+                <!-- <input type="text" placeholder="Username" required> -->
+                {{ form.username }}
+                <i class="bx bxs-user"></i>
+            </div>
+            <div class="input-box">
+                <!-- <input type="password" placeholder="Password" required> -->
+                {{ form.password }}
+                <i class="bx bxs-lock-alt"></i>
+            </div>
+
+            <div class="remember-forgot">
+                <label><input type="checkbox" />Remember Me</label>
+                <a href="#">Forgot password?</a>
+            </div>
+
+            {{ form.submit }}
+
+            <button type="submit" class="btn" href="/google">
+                Log in with Google
+            </button>
+
+            <div class="register-link">
+                <p>Don't have an account? <a href="/register">Register</a></p>
+            </div>
+            </form>
+        </div>
+        </div>
+    </body>
+</html>

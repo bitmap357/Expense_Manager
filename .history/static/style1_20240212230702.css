@@ -141,9 +141,3 @@ body {
 .register-link p a:hover {
     text-decoration: underline;
 }
-
-.google {
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-}

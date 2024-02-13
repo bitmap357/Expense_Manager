@@ -275,7 +275,6 @@ def login_with_google():
     prompt='consent'
     )
     print("Authorization URL:", authorization_url)
-    app.logger.info("Authorization URL: %s", authorization_url)
     session["state"] = state
     return redirect(authorization_url)
 
@@ -307,13 +306,11 @@ def callback():
     
     code = request.args.get('code')
     app.logger.info('Authorization code: %s', code)
+    session = session.get("state", None)
     
-    session_state = session.get("state")
-    if session_state is None or session_state != request.args.get("state"):
-        abort(500)
-    # if not session["state"] == request.args["state"]:
-    #     app.logger.error('State mismatch or missing')
-    #     abort(500)  # State does not match!
+
+    if not session["state"] == request.args["state"]:
+        abort(500)  # State does not match!
     
     flow.fetch_token(code=code)
     

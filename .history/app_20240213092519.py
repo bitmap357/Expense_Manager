@@ -275,7 +275,6 @@ def login_with_google():
     prompt='consent'
     )
     print("Authorization URL:", authorization_url)
-    app.logger.info("Authorization URL: %s", authorization_url)
     session["state"] = state
     return redirect(authorization_url)
 
@@ -302,21 +301,15 @@ def callback():
     # flow.fetch_token(authorization_response=request.url)
     # print(request.args)
     # code = request.args.get('code')
-    # app.logger.info('Authorization code: %s', code)
-    # flow.fetch_token(authorization_response=request.url)
-    
-    code = request.args.get('code')
     app.logger.info('Authorization code: %s', code)
-    
-    session_state = session.get("state")
-    if session_state is None or session_state != request.args.get("state"):
-        abort(500)
-    # if not session["state"] == request.args["state"]:
-    #     app.logger.error('State mismatch or missing')
-    #     abort(500)  # State does not match!
-    
+    # flow.fetch_token(authorization_response=request.url)
+    code = request.args.get('code')
+
     flow.fetch_token(code=code)
-    
+
+    if not session["state"] == request.args["state"]:
+        abort(500)  # State does not match!
+
     credentials = flow.credentials
     request_session = request.session()
     cached_session = cachecontrol.CacheControl(request_session)
@@ -330,7 +323,7 @@ def callback():
 
     session["google_id"] = id_info.get("sub")
     session["name"] = id_info.get("name")
-    return redirect("/addview")
+    return redirect("/protected_area")
 
 
 

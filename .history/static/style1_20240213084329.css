@@ -142,8 +142,12 @@ body {
     text-decoration: underline;
 }
 
-.google {
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
+.google im{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.google a:hover {
+    text-decoration: underline;
 }

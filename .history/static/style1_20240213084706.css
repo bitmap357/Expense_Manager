@@ -146,4 +146,9 @@ body {
     margin-top: 10px;
     display: flex;
     justify-content: center;
+    fi: #fff;
+}
+
+.google {
+    pointer-events: all;
 }
