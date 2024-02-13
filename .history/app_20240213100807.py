@@ -33,7 +33,7 @@ db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 app.config['SECRET_KEY'] = 'thisismysecretkey'
 
-# os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
 
 login_manager = LoginManager()
@@ -311,9 +311,9 @@ def callback():
     # session_state = session.get("state")
     # if session_state is None or session_state != request.args.get("state"):
     #     abort(500)
-    if not session["state"] == request.args["state"]:
-        app.logger.error('State mismatch or missing')
-        abort(500)  # State does not match!
+    # if not session["state"] == request.args["state"]:
+    #     app.logger.error('State mismatch or missing')
+    #     abort(500)  # State does not match!
     
     flow.fetch_token(code=code)
     

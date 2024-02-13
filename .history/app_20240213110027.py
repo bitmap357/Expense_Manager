@@ -269,7 +269,7 @@ def register():
 
 @app.route('/google')
 def login_with_google():
-    # authorization_url, state = flow.authorization_url()
+    authorization_url, state = flow.authorization_url()
     authorization_url, state = flow.authorization_url(
     access_type='offline',
     prompt='consent'

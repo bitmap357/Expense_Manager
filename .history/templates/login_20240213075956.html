@@ -11,7 +11,13 @@
         <div class="container">
         <div class="logo">
             <a class="navbar-brand logo" href="#">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
                 <path
                 d="M26.058 9.258L31.9 5.646L42.36 12.939L35.927 17.865M36.204 28.613L42.5 23.473M36.204 25.952L42.5 20.812M36.204 23.292L42.5 18.152M36.204 20.632L42.5 15.492M16.517 14.344L24.222 9.544L34.496 18.232V30.798L28.529 35.634V23.817L16.517 14.344Z"
                 stroke="black"
@@ -56,33 +62,33 @@
 
         <div div class="wrapper">
             <form method="POST" action="">
-                {{ form.hidden_tag() }}
-                <h1>Login</h1>
-                <div class="input-box">
-                    <!-- <input type="text" placeholder="Username" required> -->
-                    {{ form.username }}
-                    <i class="bx bxs-user"></i>
-                </div>
-                <div class="input-box">
-                    <!-- <input type="password" placeholder="Password" required> -->
-                    {{ form.password }}
-                    <i class="bx bxs-lock-alt"></i>
-                </div>
+            {{ form.hidden_tag() }}
+            <h1>Login</h1>
+            <div class="input-box">
+                <!-- <input type="text" placeholder="Username" required> -->
+                {{ form.username }}
+                <i class="bx bxs-user"></i>
+            </div>
+            <div class="input-box">
+                <!-- <input type="password" placeholder="Password" required> -->
+                {{ form.password }}
+                <i class="bx bxs-lock-alt"></i>
+            </div>
 
-                <div class="remember-forgot">
-                    <label><input type="checkbox" />Remember Me</label>
-                    <a href="#">Forgot password?</a>
-                </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox" />Remember Me</label>
+                <a href="#">Forgot password?</a>
+            </div>
 
-                {{ form.submit }}
+            {{ form.submit }}
 
-                <button class="btn" href="/google">
-                    Log in with Google
-                </button>
+            <button type="submit" class="btn" href="/google">
+                Log in with Google
+            </button>
 
-                <div class="register-link">
-                    <p>Don't have an account? <a href="/register">Register</a></p>
-                </div>
+            <div class="register-link">
+                <p>Don't have an account? <a href="/register">Register</a></p>
+            </div>
             </form>
         </div>
         </div>

@@ -33,7 +33,7 @@ db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 app.config['SECRET_KEY'] = 'thisismysecretkey'
 
-# os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
 
 login_manager = LoginManager()
