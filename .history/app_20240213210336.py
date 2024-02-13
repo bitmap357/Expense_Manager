@@ -13,6 +13,7 @@ import pathlib
 from google.auth.transport.requests import Request
 import requests
 import os
+import urllib.parse
 # from flask_migrate import Migrate
 # from .models import Expense
 # from . import db
@@ -46,6 +47,9 @@ login_manager.login_view = 'login'
 
 GOOGLE_CLIENT_ID = "828960771939-bu24ngd36lpkt5hb5dpf7i3h46cu0aad.apps.googleusercontent.com"
 client_secrets_file = os.path.join(pathlib.Path(__file__).parent, "client_secret.json")
+
+
+base_url = 
 
 flow = Flow.from_client_secrets_file(
     client_secrets_file=client_secrets_file,

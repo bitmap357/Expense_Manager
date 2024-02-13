@@ -11,7 +11,6 @@ from pip._vendor import cachecontrol
 from flask_bcrypt import Bcrypt
 import pathlib
 from google.auth.transport.requests import Request
-import requests
 import os
 # from flask_migrate import Migrate
 # from .models import Expense
@@ -26,7 +25,7 @@ database_file = "sqlite:///{}".format(
     os.path.join(project_dir, "mydatabase.db")
 )
 
-
+SESSION_TYPE = 'app'
 
 app = Flask(__name__)
 sess = Session()
@@ -338,74 +337,56 @@ def login_with_google():
 
 @app.route("/callback")
 def callback():
-    try:
-        # flow.fetch_token(authorization_response=request.url)
-        # print(request.args)
-        # code = request.args.get('code')
-        # app.logger.info('Authorization code: %s', code)
-        # flow.fetch_token(authorization_response=request.url)
-        
-        code = request.args.get('code')
-        app.logger.info('Authorization code: %s', code)
-        
-        # session_state = session.get("state")
-        # if session_state is None or session_state != request.args.get("state"):
-        #     abort(500)
-        if not session["state"] == request.args["state"]:
-            app.logger.error('State mismatch or missing')
-            abort(500)  # State does not match!
-        
-        # token_url, _ = flow.authorization_url()
-        # token_url = token_url.replace('response_type=code', 'response_type=token')
-        # token_url = token_url.replace('access_type=offline', '')  # Remove offline access type if present
-        # token_url += '&code=' + code
+    # flow.fetch_token(authorization_response=request.url)
+    # print(request.args)
+    # code = request.args.get('code')
+    # app.logger.info('Authorization code: %s', code)
+    # flow.fetch_token(authorization_response=request.url)
+    
+    code = request.args.get('code')
+    app.logger.info('Authorization code: %s', code)
+    
+    # session_state = session.get("state")
+    # if session_state is None or session_state != request.args.get("state"):
+    #     abort(500)
+    if not session["state"] == request.args["state"]:
+        app.logger.error('State mismatch or missing')
+        abort(500)  # State does not match!
+    
+    flow.fetch_token(code=code)
+    
+    credentials = flow.credentials
+    request_session = request.session()
+    cached_session = cachecontrol.CacheControl(request_session)
+    token_request = google.auth.transport.requests.Request(session=cached_session)
 
-        # response = requests.post(token_url)
-        # print("Token endpoint response content:", response.content)  # Print response content for debugging
-        # try:
-        #     token_response = response.json()
-        # except ValueError:
-        #     abort(500)
-            
-            
-        flow.fetch_token(code=code)
-        
-        credentials = flow.credentials
-        request_session = request.Session()
-        cached_session = cachecontrol.CacheControl(request_session)
-        token_request = google.auth.transport.requests.Request(session=cached_session)
+    id_info = id_token.verify_oauth2_token(
+        id_token=credentials._id_token,
+        request=token_request,
+        audience=GOOGLE_CLIENT_ID
+    )
 
-        id_info = id_token.verify_oauth2_token(
-            id_token=credentials._id_token,
-            request=token_request,
-            audience=GOOGLE_CLIENT_ID
-        )
+    session["google_id"] = id_info.get("sub")
+    session["name"] = id_info.get("name")
+    return redirect("/addview")
+    
+    credentials = flow.credentials
+    request_session = request.session()
+    cached_session = cachecontrol.CacheControl(request_session)
+    token_request = google.auth.transport.requests.Request(session=cached_session)
 
-        session["google_id"] = id_info.get("sub")
-        session["name"] = id_info.get("name")
-        return redirect("/addview")
-        
-        # credentials = flow.credentials
-        # request_session = request.session()
-        # cached_session = cachecontrol.CacheControl(request_session)
-        # token_request = google.auth.transport.requests.Request(session=cached_session)
+    id_info = id_token.verify_oauth2_token(
+        id_token=credentials._id_token,
+        request=token_request,
+        audience=GOOGLE_CLIENT_ID
+    )
 
-        # id_info = id_token.verify_oauth2_token(
-        #     id_token=credentials._id_token,
-        #     request=token_request,
-        #     audience=GOOGLE_CLIENT_ID
-        # )
+    session["google_id"] = id_info.get("sub")
+    session["name"] = id_info.get("name")
+    return redirect("/addview")
 
-        # session["google_id"] = id_info.get("sub")
-        # session["name"] = id_info.get("name")
-        # return redirect("/addview")
 
-    except Exception as e:
-        app.logger.error("An error occurred during callback: %s", str(e))
-        raise 
 
 if __name__ == '__main__':
-    app.secret_key = 'thisismysecretkey'
-    app.config['SESSION_TYPE'] = 'filesystem'
-    sess.init_app(app)
+    app.secr
     app.run(debug=True)

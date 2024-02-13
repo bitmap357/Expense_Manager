@@ -372,7 +372,7 @@ def callback():
         
         credentials = flow.credentials
         request_session = request.Session()
-        cached_session = cachecontrol.CacheControl(request_session)
+        cached_session = cachecontrol.CacheControl(request_sessionsession)
         token_request = google.auth.transport.requests.Request(session=cached_session)
 
         id_info = id_token.verify_oauth2_token(

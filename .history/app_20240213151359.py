@@ -371,8 +371,8 @@ def callback():
         flow.fetch_token(code=code)
         
         credentials = flow.credentials
-        request_session = request.Session()
-        cached_session = cachecontrol.CacheControl(request_session)
+        request_session = request.session()
+        cached_session = cachecontrol.CacheControl(session)
         token_request = google.auth.transport.requests.Request(session=cached_session)
 
         id_info = id_token.verify_oauth2_token(
@@ -400,9 +400,7 @@ def callback():
         # session["name"] = id_info.get("name")
         # return redirect("/addview")
 
-    except Exception as e:
-        app.logger.error("An error occurred during callback: %s", str(e))
-        raise 
+    
 
 if __name__ == '__main__':
     app.secret_key = 'thisismysecretkey'
