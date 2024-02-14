@@ -125,7 +125,6 @@ class Expense(db.Model):
 #     return 'App Blueprint'
 
 @app.route('/')
-@login_required
 def add():
     return render_template('add.html')
 
@@ -160,7 +159,6 @@ def edit():
 
     
 @app.route('/expenses')
-@login_required
 def expenses():
     expenses = Expense.query.all()
     total = 0
@@ -333,8 +331,7 @@ def callback():
     try:
         flow.fetch_token(authorization_response=request.url)
         # print(request.args)
-        code = request.args.get('code')
-        flow.fetch_token(code=code)
+        # code = request.args.get('code')
         # app.logger.info('Authorization code: %s', code)
         # flow.fetch_token(authorization_response=request.url)
         
@@ -364,7 +361,7 @@ def callback():
         # flow.fetch_token(code=code)
         
         credentials = flow.credentials
-        request_session = request.session()
+        request_session = request.Session()
         cached_session = cachecontrol.CacheControl(request_session)
         token_request = google.auth.transport.requests.Request(session=cached_session)
 

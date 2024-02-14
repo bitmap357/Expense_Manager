@@ -333,8 +333,7 @@ def callback():
     try:
         flow.fetch_token(authorization_response=request.url)
         # print(request.args)
-        code = request.args.get('code')
-        flow.fetch_token(code=code)
+        # code = request.args.get('code')
         # app.logger.info('Authorization code: %s', code)
         # flow.fetch_token(authorization_response=request.url)
         
@@ -364,7 +363,7 @@ def callback():
         # flow.fetch_token(code=code)
         
         credentials = flow.credentials
-        request_session = request.session()
+        request_session = request.Session()
         cached_session = cachecontrol.CacheControl(request_session)
         token_request = google.auth.transport.requests.Request(session=cached_session)
 

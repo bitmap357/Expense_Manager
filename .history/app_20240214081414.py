@@ -331,10 +331,9 @@ def login_with_google():
 @app.route("/callback")
 def callback():
     try:
-        flow.fetch_token(authorization_response=request.url)
+        flow.fetch_token(authorization_response=request.uri)
         # print(request.args)
-        code = request.args.get('code')
-        flow.fetch_token(code=code)
+        # code = request.args.get('code')
         # app.logger.info('Authorization code: %s', code)
         # flow.fetch_token(authorization_response=request.url)
         

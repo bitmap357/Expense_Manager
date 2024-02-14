@@ -12,7 +12,6 @@ from flask_bcrypt import Bcrypt
 import pathlib
 from google.auth.transport.requests import Request
 import requests
-import google.auth
 import os
 # from flask_migrate import Migrate
 # from .models import Expense
@@ -38,7 +37,7 @@ bcrypt = Bcrypt(app)
 # app.config['SECRET_KEY'] = 'thisismysecretkey'
 
 
-os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+# os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
 
 login_manager = LoginManager()
@@ -46,7 +45,7 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 GOOGLE_CLIENT_ID = "828960771939-bu24ngd36lpkt5hb5dpf7i3h46cu0aad.apps.googleusercontent.com"
-client_secrets_file = os.path.join(pathlib.Path(__file__).parent, "client_secret_2.json")
+client_secrets_file = os.path.join(pathlib.Path(__file__).parent, "client_secret.json")
 
 flow = Flow.from_client_secrets_file(
     client_secrets_file=client_secrets_file,
@@ -273,6 +272,7 @@ def register():
     return render_template('register.html', form=form)
 
 @app.route('/google')
+@app.route('/google')
 def login_with_google():
     # authorization_url, state = flow.authorization_url()
     authorization_url, state = flow.authorization_url(
@@ -280,7 +280,10 @@ def login_with_google():
     prompt='consent'
     )
     print("Authorization URL:", authorization_url)
-    app.logger.info("Authorization URL: %s", authorization_url)    
+    app.logger.info("Authorization URL: %s", authorization_url)
+    
+    print("Authorization URL:", authorization_url)
+    app.logger.info("Authorization URL: %s", authorization_url)
     session["state"] = state
     return redirect(authorization_url)
 
@@ -333,8 +336,7 @@ def callback():
     try:
         flow.fetch_token(authorization_response=request.url)
         # print(request.args)
-        code = request.args.get('code')
-        flow.fetch_token(code=code)
+        # code = request.args.get('code')
         # app.logger.info('Authorization code: %s', code)
         # flow.fetch_token(authorization_response=request.url)
         
@@ -364,7 +366,7 @@ def callback():
         # flow.fetch_token(code=code)
         
         credentials = flow.credentials
-        request_session = request.session()
+        request_session = request.Session()
         cached_session = cachecontrol.CacheControl(request_session)
         token_request = google.auth.transport.requests.Request(session=cached_session)
 

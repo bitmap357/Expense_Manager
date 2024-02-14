@@ -334,9 +334,8 @@ def callback():
         flow.fetch_token(authorization_response=request.url)
         # print(request.args)
         code = request.args.get('code')
-        flow.fetch_token(code=code)
         # app.logger.info('Authorization code: %s', code)
-        # flow.fetch_token(authorization_response=request.url)
+        flow.fetch_token(authorization_response=request.url)
         
         # code = request.args.get('code', None)
         # app.logger.info('Authorization code: %s', code)
